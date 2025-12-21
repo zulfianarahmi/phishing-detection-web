@@ -1,0 +1,138 @@
+.container {
+  min-height: 100vh;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
+
+.header {
+  margin-bottom: var(--spacing-xl);
+  position: relative;
+}
+
+.backLink {
+  display: inline-block;
+  margin-bottom: var(--spacing-md);
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--spacing-sm);
+}
+
+.detailButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: var(--color-accent);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.detailButton:hover {
+  background: var(--color-accent-hover);
+}
+
+.externalLink {
+  display: inline-block;
+  margin-top: var(--spacing-xs);
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.externalLink:hover {
+  color: var(--color-accent-hover);
+  text-decoration: underline;
+}
+
+.main {
+  line-height: 1.8;
+}
+
+.section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text);
+}
+
+.section p {
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-light);
+}
+
+.list {
+  list-style-position: inside;
+  margin: var(--spacing-md) 0;
+  padding-left: var(--spacing-sm);
+}
+
+.list li {
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-text-light);
+}
+
+.note {
+  padding: var(--spacing-sm);
+  background: #f9fafb;
+  border-left: 3px solid var(--color-accent);
+  margin-top: var(--spacing-md);
+  font-size: 0.875rem;
+}
+
+.warningBox {
+  padding: var(--spacing-md);
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: 6px;
+  margin-top: var(--spacing-md);
+}
+
+.warningBox p {
+  margin-bottom: var(--spacing-sm);
+}
+
+.warningBox strong {
+  color: var(--color-warning);
+}
+
+.footer {
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: var(--spacing-md);
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .detailButton {
+    position: static;
+    display: block;
+    width: 100%;
+    margin-top: var(--spacing-sm);
+  }
+}
+

@@ -1,0 +1,52 @@
+.uploadZone {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+  border: 2px dashed var(--color-border);
+  border-radius: 8px;
+  background: #fafafa;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.uploadZone:hover {
+  border-color: var(--color-accent);
+  background: #f0f4ff;
+}
+
+.uploadZone.dragging {
+  border-color: var(--color-accent);
+  background: #e0e7ff;
+  border-style: solid;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.icon {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-xs);
+}
+
+.text {
+  font-size: 1.125rem;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.hint {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  margin: 0;
+}
+
+.hiddenInput {
+  display: none;
+}
+

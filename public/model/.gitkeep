@@ -1,0 +1,5 @@
+# Folder ini akan berisi model TensorFlow.js setelah konversi
+# File yang dihasilkan:
+# - model.json
+# - model.weights.bin (atau beberapa shard files)
+
