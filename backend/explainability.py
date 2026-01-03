@@ -99,3 +99,8 @@ def get_recommendation(is_phishing: bool, probability: float) -> str:
         else:
             return "Verifikasi manual sangat disarankan. Jangan hanya mengandalkan hasil analisis visual ini."
 
+
+
+
+
+

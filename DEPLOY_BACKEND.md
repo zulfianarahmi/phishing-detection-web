@@ -100,3 +100,8 @@ model_path = os.path.join(os.path.dirname(__file__), "..", "model.h5")
 - **Port error**: Gunakan `$PORT` environment variable
 - **Build failed**: Cek requirements.txt dan Python version
 
+
+
+
+
+

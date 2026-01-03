@@ -1,25 +1,15 @@
 'use client'
 
-import { useState } from 'react'
 import Link from 'next/link'
-import { ProjectModal } from '@/components/ProjectModal'
 import styles from './page.module.css'
 
 export default function AboutPage() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
-
   return (
     <div>
       <div className={styles.container}>
         <header className={styles.header}>
           <Link href="/" className={styles.backLink}>← Kembali</Link>
           <h1 className={styles.title}>Tentang Model</h1>
-          <button 
-            onClick={() => setIsModalOpen(true)}
-            className={styles.detailButton}
-          >
-            📋 Detail Project
-          </button>
         </header>
 
         <main className={styles.main}>
@@ -45,8 +35,26 @@ export default function AboutPage() {
             <li><strong>Format:</strong> PNG screenshots</li>
           </ul>
           <p className={styles.note}>
-            Dataset dan notebook training dapat diakses melalui link di bagian &quot;Detail Project&quot;.
+            Dataset bersumber dari Kaggle. Klik link di bawah untuk mengakses dataset dan notebook training lengkap.
           </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-sm)', marginTop: 'var(--spacing-md)' }}>
+            <a 
+              href="https://www.kaggle.com/datasets/zackyzac/phishing-sites-screenshot" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={styles.externalLink}
+            >
+              Dataset di Kaggle →
+            </a>
+            <a 
+              href="https://colab.research.google.com/drive/1fNftxDWd0zVc6cpSPfUllp4ZrknrzWbd?usp=sharing" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={styles.externalLink}
+            >
+              Notebook Training di Google Colab →
+            </a>
+          </div>
         </section>
 
         <section className={styles.section}>
@@ -73,8 +81,7 @@ export default function AboutPage() {
             <li><strong>Epochs:</strong> 10</li>
           </ul>
           <p className={styles.note}>
-            Training history dan detail lengkap dapat dilihat di notebook Colab. 
-            Klik tombol &quot;Detail Project&quot; di atas untuk informasi lebih lengkap.
+            Training history dan grafik performa lengkap dapat dilihat di notebook Google Colab.
           </p>
         </section>
 
@@ -140,21 +147,6 @@ export default function AboutPage() {
         </section>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Notebook & Training</h2>
-          <p>
-            Proses training lengkap dapat dilihat di Google Colab notebook:
-          </p>
-          <a 
-            href="https://colab.research.google.com/drive/1fNftxDWd0zVc6cpSPfUllp4ZrknrzWbd?usp=sharing" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className={styles.externalLink}
-          >
-            📓 Buka Notebook di Google Colab →
-          </a>
-        </section>
-
-        <section className={styles.section}>
           <h2 className={styles.sectionTitle}>Creator</h2>
           <p>
             Project ini dibuat oleh:
@@ -165,7 +157,7 @@ export default function AboutPage() {
             rel="noopener noreferrer"
             className={styles.externalLink}
           >
-            👤 Zulfiana Rahmi - Cyber Security Engineer →
+            Zulfiana Rahmi - Cyber Security Engineer →
           </a>
         </section>
 
@@ -182,11 +174,6 @@ export default function AboutPage() {
           <Link href="/">Kembali ke Home</Link>
         </footer>
       </div>
-      
-      <ProjectModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
     </div>
   )
 }

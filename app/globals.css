@@ -6,14 +6,19 @@
 
 :root {
   --color-text: #1a1a1a;
-  --color-text-light: #666;
-  --color-bg: #ffffff;
-  --color-border: #e0e0e0;
-  --color-accent: #2563eb;
-  --color-accent-hover: #1d4ed8;
-  --color-success: #059669;
-  --color-warning: #d97706;
-  --color-error: #dc2626;
+  --color-text-light: #4a4a4a;
+  --color-bg: #c4e4ff;
+  --color-bg-light: #a8d5ff;
+  --color-border: #000000;
+  --color-accent: #faed27;
+  --color-accent-hover: #f4e500;
+  --color-pink: #ff6b9d;
+  --color-pink-light: #ffa8c5;
+  --color-purple: #a78bfa;
+  --color-blue: #60a5fa;
+  --color-success: #4ade80;
+  --color-warning: #fbbf24;
+  --color-error: #ff4757;
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 1.5rem;
@@ -29,21 +34,53 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--color-text);
-  background: var(--color-bg);
-  line-height: 1.6;
+  background: linear-gradient(135deg, #c4e4ff 0%, #a8d5ff 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  line-height: 1.5;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.1) 35px, rgba(255,255,255,.1) 70px),
+    repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(255,255,255,.05) 35px, rgba(255,255,255,.05) 70px);
+  pointer-events: none;
+  z-index: 0;
 }
 
 a {
-  color: var(--color-accent);
+  color: var(--color-text);
   text-decoration: none;
+  font-weight: 600;
+  position: relative;
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: none;
+  color: var(--color-pink);
 }
 
 button {
   font-family: inherit;
   cursor: pointer;
+  border: none;
 }
+
+* {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+
+
 

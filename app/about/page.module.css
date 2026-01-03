@@ -1,122 +1,230 @@
 .container {
   min-height: 100vh;
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: var(--spacing-lg);
+  padding: var(--spacing-xl) var(--spacing-lg);
 }
 
 .header {
   margin-bottom: var(--spacing-xl);
   position: relative;
+  text-align: center;
 }
 
 .backLink {
   display: inline-block;
-  margin-bottom: var(--spacing-md);
-  font-size: 0.875rem;
-  color: var(--color-text-light);
+  margin-bottom: var(--spacing-lg);
+  font-size: 1rem;
+  color: var(--color-text);
+  font-weight: 700;
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: white;
+  border: 3px solid var(--color-border);
+  border-radius: 50px;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+}
+
+.backLink:hover {
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.15);
+  background: var(--color-accent);
 }
 
 .title {
-  font-size: 2.5rem;
-  font-weight: 600;
+  font-size: 3.5rem;
+  font-weight: 900;
   letter-spacing: -0.02em;
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-text);
+  text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+  line-height: 1.1;
+  transform: rotate(-1deg);
+  display: inline-block;
+  position: relative;
 }
 
-.detailButton {
+.title::after {
+  content: '📚';
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: var(--spacing-xs) var(--spacing-md);
-  background: var(--color-accent);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s;
+  top: -20px;
+  right: -50px;
+  font-size: 2.5rem;
+  animation: float 3s ease-in-out infinite;
 }
 
-.detailButton:hover {
-  background: var(--color-accent-hover);
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(5deg); }
 }
 
 .externalLink {
   display: inline-block;
-  margin-top: var(--spacing-xs);
-  color: var(--color-accent);
+  margin-top: var(--spacing-md);
+  color: var(--color-text);
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s;
+  font-weight: 700;
+  transition: all 0.2s;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background: var(--color-accent);
+  border: 3px solid var(--color-border);
+  border-radius: 50px;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);
 }
 
 .externalLink:hover {
-  color: var(--color-accent-hover);
-  text-decoration: underline;
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
 }
 
 .main {
-  line-height: 1.8;
+  line-height: 1.7;
 }
 
 .section {
   margin-bottom: var(--spacing-xl);
+  padding: var(--spacing-xl);
+  background: white;
+  border: 4px solid var(--color-border);
+  border-radius: 24px;
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 10%;
+  right: 10%;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-border) 0px,
+    var(--color-border) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  border-radius: 3px;
 }
 
 .sectionTitle {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.75rem;
+  font-weight: 900;
   margin-bottom: var(--spacing-md);
   color: var(--color-text);
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  display: inline-block;
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 4px solid var(--color-accent);
 }
 
 .section p {
-  margin-bottom: var(--spacing-sm);
-  color: var(--color-text-light);
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text);
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
 .list {
-  list-style-position: inside;
+  list-style: none;
   margin: var(--spacing-md) 0;
-  padding-left: var(--spacing-sm);
+  padding-left: 0;
 }
 
 .list li {
-  margin-bottom: var(--spacing-xs);
-  color: var(--color-text-light);
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text);
+  font-weight: 600;
+  padding-left: var(--spacing-lg);
+  position: relative;
+}
+
+.list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--color-pink);
+  font-weight: bold;
+  font-size: 1.25rem;
 }
 
 .note {
-  padding: var(--spacing-sm);
-  background: #f9fafb;
-  border-left: 3px solid var(--color-accent);
+  padding: var(--spacing-md);
+  background: var(--color-purple);
+  border: 3px solid var(--color-border);
+  border-radius: 16px;
   margin-top: var(--spacing-md);
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: white;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);
 }
 
 .warningBox {
-  padding: var(--spacing-md);
-  background: #fffbeb;
-  border: 1px solid #fcd34d;
-  border-radius: 6px;
+  padding: var(--spacing-lg);
+  background: var(--color-accent);
+  border: 4px solid var(--color-border);
+  border-radius: 20px;
   margin-top: var(--spacing-md);
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.warningBox::before {
+  content: '⚠️';
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.5rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.1); }
 }
 
 .warningBox p {
   margin-bottom: var(--spacing-sm);
+  color: var(--color-text);
+  font-weight: 700;
 }
 
 .warningBox strong {
-  color: var(--color-warning);
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 3px;
 }
 
 .footer {
   margin-top: var(--spacing-xl);
   padding-top: var(--spacing-lg);
-  border-top: 1px solid var(--color-border);
   text-align: center;
+}
+
+.footer a {
+  display: inline-block;
+  padding: var(--spacing-sm) var(--spacing-xl);
+  background: var(--color-pink);
+  color: white;
+  border: 4px solid var(--color-border);
+  border-radius: 50px;
+  font-weight: 800;
+  text-transform: uppercase;
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s;
+  letter-spacing: 0.5px;
+}
+
+.footer a:hover {
+  transform: translateY(-3px);
+  box-shadow: 9px 9px 0px rgba(0, 0, 0, 0.2);
+  background: var(--color-pink-light);
 }
 
 @media (max-width: 768px) {
@@ -125,14 +233,115 @@
   }
   
   .title {
+    font-size: 2.25rem;
+  }
+  
+  .title::after {
+    right: -30px;
+    font-size: 1.75rem;
+  }
+  
+  .section {
+    padding: var(--spacing-md);
+    border-width: 3px;
+  }
+  
+  .sectionTitle {
+    font-size: 1.375rem;
+  }
+  
+  .section p {
+    font-size: 0.9375rem;
+  }
+  
+  .list li {
+    font-size: 0.875rem;
+    padding-left: var(--spacing-md);
+  }
+  
+  .list li::before {
+    font-size: 1rem;
+  }
+  
+  .note {
+    font-size: 0.875rem;
+    padding: var(--spacing-sm);
+    border-width: 2px;
+  }
+  
+  .warningBox {
+    padding: var(--spacing-md);
+    border-width: 3px;
+  }
+  
+  .warningBox::before {
     font-size: 2rem;
   }
   
-  .detailButton {
-    position: static;
-    display: block;
-    width: 100%;
-    margin-top: var(--spacing-sm);
+  .warningBox p {
+    font-size: 0.875rem;
+  }
+  
+  .backLink,
+  .externalLink {
+    font-size: 0.9375rem;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-width: 2px;
+  }
+  
+  .footer a {
+    font-size: 0.9375rem;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-width: 3px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .container {
+    padding: var(--spacing-sm);
+  }
+  
+  .title {
+    font-size: 1.875rem;
+  }
+  
+  .title::after {
+    right: -25px;
+    font-size: 1.5rem;
+  }
+  
+  .section {
+    padding: var(--spacing-sm);
+  }
+  
+  .sectionTitle {
+    font-size: 1.125rem;
+  }
+  
+  .section p {
+    font-size: 0.875rem;
+  }
+  
+  .list li {
+    font-size: 0.8125rem;
+  }
+  
+  .note {
+    font-size: 0.8125rem;
+  }
+  
+  .warningBox {
+    padding: var(--spacing-sm);
+  }
+  
+  .warningBox::before {
+    font-size: 1.75rem;
+    top: -20px;
+  }
+  
+  .warningBox p {
+    font-size: 0.8125rem;
   }
 }
 

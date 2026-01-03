@@ -76,3 +76,8 @@ Endpoint untuk data collection (opt-in)
 - Untuk production, update CORS origins di `main.py` dengan domain Vercel kamu
 - Pertimbangkan rate limiting untuk production
 
+
+
+
+
+

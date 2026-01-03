@@ -25,46 +25,92 @@ export function ResultDisplay({ result }: ResultDisplayProps) {
     recommendation
   } = result
   const isPhishing = label === 'phishing'
+  
+  // Determine which bar should be on top (higher probability)
+  const showPhishingFirst = phishingProb >= genuineProb
 
   return (
     <div className={styles.result}>
       <div className={`${styles.label} ${isPhishing ? styles.phishing : styles.genuine}`}>
+        <span className={styles.labelIcon}>
+          {isPhishing ? '⚠️' : '✓'}
+        </span>
         <span className={styles.labelText}>
-          {isPhishing ? '⚠️ Indikasi Phishing' : '✓ Terlihat Genuine'}
+          {isPhishing ? 'Indikasi Phishing' : 'Terlihat Genuine'}
         </span>
         {confidenceLevel && (
           <span className={styles.confidenceBadge}>
-            Kepercayaan: {confidenceLevel}
+            {confidenceLevel}
           </span>
         )}
       </div>
 
       <div className={styles.probabilities}>
-        <div className={styles.probItem}>
-          <div className={styles.probLabel}>Kemungkinan Phishing</div>
-          <div className={styles.probBar}>
-            <div
-              className={`${styles.probFill} ${styles.phishingFill}`}
-              style={{ width: `${phishingProb * 100}%` }}
-            />
-          </div>
-          <div className={styles.probValue}>
-            {(phishingProb * 100).toFixed(1)}%
-          </div>
-        </div>
+        {showPhishingFirst ? (
+          <>
+            <div className={styles.probItem}>
+              <div className={styles.probHeader}>
+                <span className={styles.probLabel}>Phishing</span>
+                <span className={styles.probValue}>
+                  {(phishingProb * 100).toFixed(1)}%
+                </span>
+              </div>
+              <div className={styles.probBar}>
+                <div
+                  className={`${styles.probFill} ${styles.phishingFill}`}
+                  style={{ width: `${phishingProb * 100}%` }}
+                />
+              </div>
+            </div>
 
-        <div className={styles.probItem}>
-          <div className={styles.probLabel}>Kemungkinan Genuine</div>
-          <div className={styles.probBar}>
-            <div
-              className={`${styles.probFill} ${styles.genuineFill}`}
-              style={{ width: `${genuineProb * 100}%` }}
-            />
-          </div>
-          <div className={styles.probValue}>
-            {(genuineProb * 100).toFixed(1)}%
-          </div>
-        </div>
+            <div className={styles.probItem}>
+              <div className={styles.probHeader}>
+                <span className={styles.probLabel}>Genuine</span>
+                <span className={styles.probValue}>
+                  {(genuineProb * 100).toFixed(1)}%
+                </span>
+              </div>
+              <div className={styles.probBar}>
+                <div
+                  className={`${styles.probFill} ${styles.genuineFill}`}
+                  style={{ width: `${genuineProb * 100}%` }}
+                />
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className={styles.probItem}>
+              <div className={styles.probHeader}>
+                <span className={styles.probLabel}>Genuine</span>
+                <span className={styles.probValue}>
+                  {(genuineProb * 100).toFixed(1)}%
+                </span>
+              </div>
+              <div className={styles.probBar}>
+                <div
+                  className={`${styles.probFill} ${styles.genuineFill}`}
+                  style={{ width: `${genuineProb * 100}%` }}
+                />
+              </div>
+            </div>
+
+            <div className={styles.probItem}>
+              <div className={styles.probHeader}>
+                <span className={styles.probLabel}>Phishing</span>
+                <span className={styles.probValue}>
+                  {(phishingProb * 100).toFixed(1)}%
+                </span>
+              </div>
+              <div className={styles.probBar}>
+                <div
+                  className={`${styles.probFill} ${styles.phishingFill}`}
+                  style={{ width: `${phishingProb * 100}%` }}
+                />
+              </div>
+            </div>
+          </>
+        )}
       </div>
 
       {mainReason && (
@@ -84,7 +130,13 @@ export function ResultDisplay({ result }: ResultDisplayProps) {
 
       <div className={styles.warning}>
         <p>
-          <strong>Rekomendasi:</strong> {recommendation || 'Hasil ini adalah indikasi berdasarkan analisis visual. Selalu verifikasi URL, sertifikat SSL, dan domain sebelum memasukkan informasi sensitif.'}
+          <strong>⚠️ Penting:</strong> Hasil ini adalah <strong>indikasi berdasarkan analisis visual</strong> dari screenshot 
+          (warna, layout, tipografi, elemen UI) menggunakan model machine learning.
+        </p>
+        <p>
+          <strong>Model bisa salah!</strong> Ini bukan keputusan final. 
+          Selalu verifikasi <strong>URL</strong>, <strong>sertifikat SSL</strong>, dan <strong>domain</strong> sebelum 
+          memasukkan informasi sensitif seperti password, kartu kredit, atau data pribadi.
         </p>
       </div>
     </div>

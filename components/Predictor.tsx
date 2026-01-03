@@ -119,14 +119,22 @@ export function Predictor() {
   return (
     <div className={styles.predictor}>
       {!image ? (
-        <UploadZone onImageSelect={handleImageSelect} />
+        <div className={styles.heroSection}>
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>Deteksi Phishing!</h1>
+            <p className={styles.heroSubtitle}>
+              Upload screenshot situsmu 📱
+            </p>
+          </div>
+          <UploadZone onImageSelect={handleImageSelect} />
+        </div>
       ) : (
         <div className={styles.previewSection}>
           <div className={styles.imagePreview}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={image} alt="Preview" />
             <button onClick={reset} className={styles.resetButton}>
-              Ganti Gambar
+              ✕ Ganti Gambar
             </button>
           </div>
 

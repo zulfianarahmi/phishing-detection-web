@@ -14,7 +14,7 @@ export function UploadZone({ onImageSelect }: UploadZoneProps) {
   const handleFile = (file: File) => {
     // Validasi file
     if (!file.type.startsWith('image/')) {
-      alert('File harus berupa gambar (PNG, JPG, dll)')
+      alert('File harus berupa gambar (PNG, JPG, SVG)')
       return
     }
 
@@ -69,15 +69,20 @@ export function UploadZone({ onImageSelect }: UploadZoneProps) {
         className={styles.hiddenInput}
       />
       <div className={styles.content}>
-        <div className={styles.icon}>📷</div>
+        <div className={styles.icon}>📸</div>
         <p className={styles.text}>
-          <strong>Klik atau seret gambar ke sini</strong>
+          Drop screenshot atau <strong>pilih file</strong>
         </p>
         <p className={styles.hint}>
-          Format: PNG, JPG, atau format gambar lainnya
+          Format: JPG, PNG & SVG · Max 10MB
         </p>
       </div>
     </div>
   )
 }
+
+
+
+
+
 

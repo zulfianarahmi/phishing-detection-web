@@ -7,17 +7,6 @@ import styles from './page.module.css'
 export default function Home() {
   return (
     <div className={styles.container}>
-      <header className={styles.header}>
-        <h1 className={styles.title}>Deteksi Phishing</h1>
-        <p className={styles.subtitle}>
-          Alat bantu untuk mendeteksi indikasi phishing dari screenshot
-        </p>
-        <p className={styles.disclaimer}>
-          <strong>Penting:</strong> Hasil ini adalah indikasi, bukan keputusan final.
-          Jika ragu, jangan masukkan informasi sensitif atau login.
-        </p>
-      </header>
-
       <main className={styles.main}>
         <Predictor />
       </main>

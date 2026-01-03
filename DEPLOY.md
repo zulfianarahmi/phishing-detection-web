@@ -90,3 +90,8 @@ Jika kamu perlu environment variables:
 3. Test upload gambar dan prediksi
 4. Monitor di Vercel dashboard untuk error/analytics
 
+
+
+
+
+

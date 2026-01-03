@@ -1,116 +1,195 @@
 .result {
   width: 100%;
   max-width: 600px;
-  margin: 0 auto;
-  padding: var(--spacing-lg);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
+  margin: var(--spacing-lg) auto 0;
+  padding: var(--spacing-xl);
+  border-radius: 24px;
   background: white;
+  border: 4px solid var(--color-border);
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.result::before {
+  content: '🔍';
+  position: absolute;
+  top: -25px;
+  right: 30px;
+  font-size: 3rem;
+  transform: rotate(15deg);
 }
 
 .label {
   text-align: center;
-  padding: var(--spacing-md);
-  border-radius: 6px;
-  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-xl);
+  border-radius: 20px;
+  margin-bottom: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  border: 4px solid var(--color-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.label::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: repeating-linear-gradient(
+    90deg,
+    currentColor 0px,
+    currentColor 15px,
+    transparent 15px,
+    transparent 30px
+  );
 }
 
 .label.phishing {
-  background: #fef2f2;
-  border: 1px solid #fecaca;
+  background: var(--color-pink-light);
+}
+
+.label.phishing::after {
+  color: var(--color-pink);
 }
 
 .label.genuine {
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
+  background: var(--color-success);
+  opacity: 0.9;
+}
+
+.label.genuine::after {
+  color: #22c55e;
+}
+
+.labelIcon {
+  font-size: 3.5rem;
+  line-height: 1;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 .labelText {
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 1.75rem;
+  font-weight: 900;
   color: var(--color-text);
-  display: block;
-  margin-bottom: var(--spacing-xs);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
 }
 
 .confidenceBadge {
   display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 500;
-  padding: 0.25rem 0.5rem;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
-  margin-top: var(--spacing-xs);
+  font-size: 0.875rem;
+  font-weight: 800;
+  padding: 0.5rem 1rem;
+  background: var(--color-accent);
+  border: 3px solid var(--color-border);
+  border-radius: 50px;
+  color: var(--color-text);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);
 }
 
 .probabilities {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
-  margin-bottom: var(--spacing-lg);
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
 }
 
 .probItem {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
+  gap: var(--spacing-sm);
+}
+
+.probHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
 }
 
 .probLabel {
-  font-size: 0.875rem;
-  color: var(--color-text-light);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-text);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .probBar {
   width: 100%;
-  height: 24px;
-  background: #f3f4f6;
-  border-radius: 4px;
+  height: 48px;
+  background: #f5f5f5;
+  border-radius: 50px;
   overflow: hidden;
   position: relative;
+  border: 4px solid var(--color-border);
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .probFill {
   height: 100%;
-  transition: width 0.3s ease;
+  transition: width 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  border-radius: 50px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: var(--spacing-md);
 }
 
 .phishingFill {
-  background: var(--color-error);
+  background: linear-gradient(90deg, var(--color-pink) 0%, var(--color-pink-light) 100%);
 }
 
 .genuineFill {
-  background: var(--color-success);
+  background: linear-gradient(90deg, var(--color-success) 0%, #4ade80 100%);
 }
 
 .probValue {
-  font-size: 0.875rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 900;
   color: var(--color-text);
   text-align: right;
+  text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.5);
 }
 
 .explanation {
-  margin-bottom: var(--spacing-lg);
-  padding: var(--spacing-md);
-  background: #f9fafb;
-  border-radius: 6px;
-  border: 1px solid var(--color-border);
+  margin-bottom: var(--spacing-xl);
+  padding: var(--spacing-lg);
+  background: #fafafa;
+  border-radius: 20px;
+  border: 3px solid var(--color-border);
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.05);
 }
 
 .explanationTitle {
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.125rem;
+  font-weight: 800;
   color: var(--color-text);
   margin-bottom: var(--spacing-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .mainReason {
-  font-size: 0.9375rem;
+  font-size: 1rem;
   color: var(--color-text);
   margin-bottom: var(--spacing-sm);
   line-height: 1.6;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .detailsList {
@@ -120,33 +199,186 @@
 }
 
 .detailsList li {
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   color: var(--color-text-light);
-  margin-bottom: var(--spacing-xs);
-  padding-left: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  padding-left: var(--spacing-lg);
   position: relative;
   line-height: 1.5;
+  font-weight: 500;
 }
 
 .detailsList li::before {
-  content: "•";
+  content: "→";
   position: absolute;
   left: 0;
-  color: var(--color-accent);
+  color: var(--color-text);
   font-weight: bold;
+  font-size: 1.25rem;
 }
 
 .warning {
-  padding: var(--spacing-sm);
-  background: #fffbeb;
-  border-left: 3px solid var(--color-warning);
-  border-radius: 4px;
+  padding: var(--spacing-lg);
+  background: var(--color-accent);
+  border: 4px solid var(--color-border);
+  border-radius: 20px;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.warning::before {
+  content: '💡';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.1); }
 }
 
 .warning p {
-  font-size: 0.875rem;
-  color: var(--color-text-light);
-  margin: 0;
-  line-height: 1.5;
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  margin: 0 0 var(--spacing-sm) 0;
+  line-height: 1.6;
+  font-weight: 700;
+  text-align: left;
+}
+
+.warning p:last-child {
+  margin-bottom: 0;
+}
+
+.warning strong {
+  font-weight: 900;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  .result {
+    padding: var(--spacing-md);
+    border-width: 3px;
+    margin-top: var(--spacing-md);
+  }
+  
+  .result::before {
+    font-size: 2rem;
+    top: -18px;
+    right: 20px;
+  }
+  
+  .label {
+    padding: var(--spacing-md);
+    border-width: 3px;
+  }
+  
+  .labelIcon {
+    font-size: 2.5rem;
+  }
+  
+  .labelText {
+    font-size: 1.25rem;
+  }
+  
+  .confidenceBadge {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+  }
+  
+  .probHeader {
+    margin-bottom: 6px;
+  }
+  
+  .probLabel {
+    font-size: 0.75rem;
+  }
+  
+  .probBar {
+    height: 36px;
+    border-width: 3px;
+  }
+  
+  .probValue {
+    font-size: 1.125rem;
+  }
+  
+  .explanation {
+    padding: var(--spacing-md);
+    border-width: 3px;
+  }
+  
+  .explanationTitle {
+    font-size: 1rem;
+  }
+  
+  .mainReason {
+    font-size: 0.875rem;
+  }
+  
+  .detailsList li {
+    font-size: 0.8125rem;
+    padding-left: var(--spacing-md);
+  }
+  
+  .detailsList li::before {
+    font-size: 1rem;
+  }
+  
+  .warning {
+    padding: var(--spacing-md);
+    border-width: 3px;
+  }
+  
+  .warning::before {
+    font-size: 1.5rem;
+    top: -15px;
+  }
+  
+  .warning p {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+  }
+  
+  .warning strong {
+    text-decoration-thickness: 1.5px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .result {
+    padding: var(--spacing-sm);
+  }
+  
+  .label {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+  
+  .labelIcon {
+    font-size: 2rem;
+  }
+  
+  .labelText {
+    font-size: 1.125rem;
+  }
+  
+  .probBar {
+    height: 32px;
+  }
+  
+  .probValue {
+    font-size: 1rem;
+  }
+  
+  .warning p {
+    font-size: 0.75rem;
+  }
 }
 

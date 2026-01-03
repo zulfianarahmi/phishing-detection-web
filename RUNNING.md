@@ -211,3 +211,8 @@ uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4
 
 Atau deploy ke Render/Railway sesuai dokumentasi di `DEPLOY_BACKEND.md`.
 
+
+
+
+
+
