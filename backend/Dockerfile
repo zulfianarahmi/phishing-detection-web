@@ -1,32 +1,23 @@
+# Use Python 3.11 slim image
 FROM python:3.11-slim
 
+# Set working directory
 WORKDIR /app
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    gcc \
-    && rm -rf /var/lib/apt/lists/*
+# Copy requirements first for better caching
+COPY requirements.txt .
 
-# Copy requirements
-COPY backend/requirements.txt .
-
-# Install Python dependencies
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy backend code
-COPY backend/ ./backend/
+# Copy application files
+COPY . .
 
-# Copy model (pastikan model.h5 ada di root project)
-COPY model.h5 .
+# Copy model from parent directory
+COPY ../model.h5 ./model.h5
 
-# Expose port
-EXPOSE 8000
+# Expose port (Cloud Run will use PORT env var)
+EXPOSE 8080
 
-# Run server
-CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000"]
-
-
-
-
-
-
+# Run the application
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
